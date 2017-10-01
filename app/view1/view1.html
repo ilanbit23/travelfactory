@@ -1,0 +1,30 @@
+<div class="contacts display-flex flex-wrap justify-space-between p-20">
+     <div ng-repeat="contact in contacts" class="display-flex w-30-p h-180 white-bg mb-20 p-20 align-items-center justify-space-between" >
+         <div class="text-center">
+             <img class="contactImg" ng-src="{{contact.img}}" src="Assets/alex jonathan.jpg" alt="contact"/>
+             <h4>{{contact.job}}</h4>
+         </div>
+         <form class="details display-flex flex-direction-col">
+             <input class="text-bold" ng-disabled="notEdit" type="text" ng-model="contact.name"/>
+             <span>
+                 <i class="fa fa-map-marker" aria-hidden="true"></i>
+                 <input ng-disabled="notEdit" type="text" ng-model="contact.location"/>
+                 <span class="fs-11">(Lat:  {{lat}}, Lng: {{lng}})</span>
+             </span>
+             <input ng-disabled="notEdit"  class="text-bold" type="text" ng-model="contact.twitter"/>
+             <input ng-disabled="notEdit"  type="text" ng-model="contact.state"/>
+             <input ng-disabled="notEdit"  type="text" ng-model="contact.street"/>
+             <span class="text-underline">
+                 P:<input ng-disabled="notEdit" type="text" ng-keyup='checkPhone($event)' pattern="[0-9]" ng-model="contact.phoneNum"/>
+             </span>
+             <span class="red-text" ng-show="telRequired">Please enter A valid phone number</span>
+         </form>
+         <div class="align-self-end">
+             <i class="fa fa-pencil cursor-pointer" aria-hidden="true" ng-click="editContact()"></i>
+             <i class="fa fa-trash cursor-pointer" aria-hidden="true" ng-click="deleteContact(this)"></i>
+         </div>
+     </div>
+    <div class="text-center w-30-p h-180 p-20 mb-20 align-items-center">
+        <i class="mt-10-p fa fa-plus cursor-pointer plusIcon" aria-hidden="true" ng-click="addContact()"></i>
+    </div>
+</div>
